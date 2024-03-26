@@ -211,15 +211,16 @@ var inverter = {
 
     /** @brief Add/Delete a CAN mapping
      * @param direction, tx, rx, or del
+     * @param can_no, 1, 2
      * @param name, spot value name
      * @param id, canid of message
      * @param pos, offset within frame
      * @param bits, length of field
      * @param gain, multiplier
      */
-	canMapping: function(direction, name, id, pos, bits, gain)
+	canMapping: function(direction, can_no, name, id, pos, bits, gain)
 	{
-		var cmd = "can " + direction + " " + name + " " + id + " " + pos + " " + bits + " " + gain;
+		var cmd = "can" + can_no + " " + direction + " " + name + " " + id + " " + pos + " " + bits + " " + gain;
 		inverter.sendCmd(cmd);
 	},
 

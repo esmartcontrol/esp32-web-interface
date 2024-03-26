@@ -1223,13 +1223,14 @@ var ui = {
 	{
 		// fetch values from form
 		var direction = document.getElementById('txrx').value;
+		var canif = document.getElementById('canif').value;
 		var name = document.getElementById('add-can-mapping-spot-value-drop-down').value;
 		var canid = document.getElementById('canid').value;
 	    var canpos = document.getElementById('canpos').value;
 	    var canbits = document.getElementById('canbits').value;
 	    var cangain = document.getElementById('cangain').value;
 	    // send new CAN mapping to inverter
-	    inverter.canMapping(direction, name, canid, canpos, canbits, cangain);
+	    inverter.canMapping(direction, canif, name, canid, canpos, canbits, cangain);
 	    // hide form
 	    modal.hideModal('can-mapping');
 	    // refresh CAN mapping table
@@ -1253,6 +1254,9 @@ var ui = {
 					// tx/rx
 					var canTxRxCell = tr.insertCell(-1);
 					canTxRxCell.innerHTML = param.isrx ? "Receive" : "Transmit";;
+					// canif
+					var canIfCell = tr.insertCell(-1);
+					canIfCell.innerHTML = param.canif;
 					// canid
 					var canIdCell = tr.insertCell(-1);
 		        	canIdCell.innerHTML = param.canid;
@@ -1267,7 +1271,7 @@ var ui = {
 		        	canGainCell.innerHTML = param.cangain;
 		        	// delete button
 					var canDeleteCell = tr.insertCell(-1);
-					var cmd = "inverter.canMapping('del', '" + name + "');ui.populateExistingCanMappingTable();";
+					var cmd = "inverter.canMapping('del', '" + param.canif + "', '" + name + "');ui.populateExistingCanMappingTable();";
 		        	canDeleteCell.innerHTML = "<button onclick=\"" + cmd + "\"><img class=\"buttonimg\" src=\"/icon-trash.png\">Delete mapping</button>";
 				}
 			}
