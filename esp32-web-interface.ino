@@ -95,7 +95,7 @@ Ticker sta_tick;
 */
 #include <StreamString.h>
 
-#if RTC_USED == RTC_USED_DS3231
+#if RTC_USED == RTC_USED_PCF8523
 	RTC_PCF8523 ext_rtc;
 #elif RTC_USED == RTC_USED_DS3231
 	RTC_DS3231 ext_rtc;
