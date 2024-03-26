@@ -86,6 +86,11 @@
 						<td>Select the spot value/parameter to transmit or receive.</td>
 					</tr>
 					<tr>
+						<td>CAN IF</td>
+						<td><input type="number" step="1" min="1" max="2" id="canif"></td>
+						<td>Set the NO of the CAN interface to send/receive</td>
+					</tr>
+					<tr>
 						<td>CAN ID</td>
 						<td><input type="number" step="1" min="0" max="2047" id="canid"></td>
 						<td>Set the ID of the CAN frame to send/receive</td>
@@ -487,9 +492,12 @@
 						<button onclick="modal.showModal('can-mapping');">
 							<!-- /icon-plus-circle.png -->
 							<img class="buttonimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAYVJREFUSInFlb9OAkEQxn9acfGaI3bQc/gO/n0AtLM1Rn0FDY9kpZSKiUil0qqAiY1Xi4ZeLHYmt0eO2yWB+CWbTeZmvvluZncWlowVx/cycAA0gBioij0B+kALuAK+5k0cAE3gB5g41rf4Br7kVaBnEdwAJ0ANWJMVA6fAreXXAyo+5IkEDIAtD0HbwFBikqIkgaX8Hog8yBUR0JHYJ6CU59QkVT4PuaIMvAvHRd5HbWhRWbqyZmGHtPEZkcekDS2CNrQIbfE5AlgVY0P2S0ewD5SjYRsHkrXmCPb5g1h8+rZxLMZwyrmL+6JN9yQU+xjSEi0SyvlrG5dWIs32Kvumr8wC6DF/sRO0ZD9cQALlaNnGMuZyTDCzZRZcF21POEbkTAMdFR/AurferEgdFed5DiXgWRw6eQoc5A84hh2YUavjeoiZLS7skir/xONNqIgKPZJt4AyoYy5RCGyI7c7ye/QhV5QwI1cbX7RGmJrnlsX16EfAPmZw1ck++m+Yo3gtSf4Hf6VKhAI+0rkQAAAAAElFTkSuQmCC">Add new mapping</button>
-						<button onclick="ui.sendCmd('can clear');">
+						<button onclick="ui.sendCmd('can1 clear');">
 							<!-- /icon-trash-2.png -->
-							<img class="buttonimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAKNJREFUSIntlmEKhCAQhT+Wpb1T0fXatmu5V9GOUT8yCHdCJ6kt6MGgw9N5Myoq/BkvoAMcMATmgA9Q5Ah0QuDQ2hyBOfNS4CrP2RyBOcutPI9F3/BbfhgolTeSwGGIlq2Zt3sFpxEwLDZO8FWQ1nLt1MTmnWeJboH98Ewc9434Klz/quh9Wyni1L51KYNb4s/kmjUpAgXTY24VgS3wJvMDsAkjQRJaZqmk/aEAAAAASUVORK5CYII=">Remove all mappings</button>
+							<img class="buttonimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAKNJREFUSIntlmEKhCAQhT+Wpb1T0fXatmu5V9GOUT8yCHdCJ6kt6MGgw9N5Myoq/BkvoAMcMATmgA9Q5Ah0QuDQ2hyBOfNS4CrP2RyBOcutPI9F3/BbfhgolTeSwGGIlq2Zt3sFpxEwLDZO8FWQ1nLt1MTmnWeJboH98Ewc9434Klz/quh9Wyni1L51KYNb4s/kmjUpAgXTY24VgS3wJvMDsAkjQRJaZqmk/aEAAAAASUVORK5CYII=">Remove CAN1 mappings</button>
+						<button onclick="ui.sendCmd('can2 clear');">
+							<!-- /icon-trash-2.png -->
+							<img class="buttonimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAKNJREFUSIntlmEKhCAQhT+Wpb1T0fXatmu5V9GOUT8yCHdCJ6kt6MGgw9N5Myoq/BkvoAMcMATmgA9Q5Ah0QuDQ2hyBOfNS4CrP2RyBOcutPI9F3/BbfhgolTeSwGGIlq2Zt3sFpxEwLDZO8FWQ1nLt1MTmnWeJboH98Ewc9434Klz/quh9Wyni1L51KYNb4s/kmjUpAgXTY24VgS3wJvMDsAkjQRJaZqmk/aEAAAAASUVORK5CYII=">Remove CAN2 mappings</button>
 						<button onclick="ui.showParamsSavedModal();">
 							<!-- /icon-save.png -->
 							<img class="buttonimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAALhJREFUSIndlUsOgjAQhj+M0RNI4lU0Xs8H12LJDhaeADwGbqamNLSZERJj/2TS5/xf21kUctIeqIABGA3RAKUGUBmN/eg0EHfyk4xdckqlmKsgoaEGAHAAWtn7BI5rA9SQGCAVtbfff65GA6iNAAeJ3tzyJClNfDYrGCb1U4CmBrFafFR4/TGYs9YjzCsAtobEmJIHybvI/wd4SXte4HeRdphbvPP9hxPGdQ6wAx5Av8C4B27ilYnep/GG5uAVCQ8AAAAASUVORK5CYII=">Save mappings to flash</button>
@@ -505,6 +513,7 @@
 							<tr>
 								<th>Spot Value</th>
 								<th>Transmit or Receive</th>
+								<th>IF</th>
 								<th>ID</th>
 								<th>Position</th>
 								<th>Length</th>

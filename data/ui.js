@@ -1180,6 +1180,7 @@ var ui = {
 		// fetch values from form
 		map.isrx = document.getElementById('txrx').value == 'rx';
 		map.paramid = parseInt(document.getElementById('add-can-mapping-spot-value-drop-down').value);
+		map.if = parseInt(document.getElementById('canif').value);
 		map.id = parseInt(document.getElementById('canid').value);
 		map.position = parseInt(document.getElementById('canpos').value);
 		map.length = parseInt(document.getElementById('canbits').value);
@@ -1209,6 +1210,9 @@ var ui = {
         // tx/rx
         var canTxRxCell = tr.insertCell(-1);
         canTxRxCell.innerHTML = mapping.isrx ? "Receive" : "Transmit";;
+        // canif
+		var canIfCell = tr.insertCell(-1);
+			canIfCell.innerHTML = mapping.if;
         // canid
         var canIdCell = tr.insertCell(-1);
             canIdCell.innerHTML = mapping.id;

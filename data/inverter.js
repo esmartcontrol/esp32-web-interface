@@ -144,6 +144,7 @@ var inverter = {
   /** @brief Delete a CAN mapping
    *
    * @param replyFunc function called with updated mapping info after deletion
+   * @param if, 1, 2
    * @param index index of message to be deleted
    * @param subindex index of item within message to be deleted
    *
@@ -153,6 +154,7 @@ var inverter = {
   },
 
   /** @brief Add a CAN mapping
+   * @param if, 1, 2
    * @param direction true for rx, false for tx
    * @param name, spot value name
    * @param id, canid of message

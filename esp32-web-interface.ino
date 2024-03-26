@@ -74,6 +74,10 @@
 
 #define LOG_DELAY_VAL 10000
 
+#define	RTC_USED_PCF8523	0
+#define	RTC_USED_DS3231		1
+#define RTC_USED			    RTC_USED_DS3231
+
 //HardwareSerial Inverter(INVERTER_PORT);
 
 const char* host = "inverter";
@@ -89,7 +93,16 @@ HTTPUpdateServer updater;
 File fsUploadFile;
 Ticker sta_tick;
 
-RTC_PCF8523 ext_rtc;
+#include <StreamString.h>
+
+#if RTC_USED == RTC_USED_DS3231
+	RTC_PCF8523 ext_rtc;
+#elif RTC_USED == RTC_USED_DS3231
+	RTC_DS3231 ext_rtc;
+#else
+	#error ("You have to define a availabled RTC IC")
+#endif
+
 ESP32Time int_rtc;
 bool haveRTC = false;
 bool haveSDCard = false;
@@ -648,13 +661,26 @@ void setup(void){
   {
     haveRTC = true;
     DBG_OUTPUT_PORT.println("External RTC found");
-    if (! ext_rtc.initialized() || ext_rtc.lostPower())
+    
+#if RTC_USED == RTC_USED_PCF8523
+	if (! ext_rtc.initialized() || ext_rtc.lostPower())
+#elif RTC_USED == RTC_USED_DS3231
+	if (ext_rtc.lostPower()) 
+#else
+	#error ("You have to define a availabled RTC IC")
+#endif
     {
       DBG_OUTPUT_PORT.println("RTC is NOT initialized, setting to build time");
       ext_rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
     }
 
-    ext_rtc.start();
+#if RTC_USED == RTC_USED_PCF8523
+	ext_rtc.start();
+#elif RTC_USED == RTC_USED_DS3231
+
+#else
+	#error ("You have to define a availabled RTC IC")
+#endif
     DateTime now = ext_rtc.now();
     int_rtc.setTime(now.unixtime());
   }
